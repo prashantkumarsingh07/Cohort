@@ -1,0 +1,4 @@
+what is debouncing -> when debouncepopulateDiv() called using throtelling it will only call the main function if debouncepopulateDiv() itself is not call within 1000 millisecond(acc to user need) 
+-> as it thinks that user is thinking what to type , so program will wait for 1000 millisecond.
+
+-> So how to implement it : clear the old clock if debouncepopulateDiv() called again and start new clock again.

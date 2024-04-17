@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculate sum </title>
+</head>
+
+<script>
+   function populateDiv(){
+      // const element= document.getElementById("sum");
+      // element.innerHTML="hello world";
+      const a = document.getElementById("first").value;
+      const b = document.getElementById("second").value;
+      // element.innerHTML=parseInt(a)+parseInt(b); simply without hitting a backend server
+
+      // using fetch   ---- by hitting a server
+
+      fetch("https://sum-server.100xdevs.com/sum?a="+a+"&b="+b)
+      .then(function(response){
+           response.text()
+           .then(function(ans){
+                document.getElementById("sum").innerHTML=ans;
+           })
+
+      })} 
+        // cleaner way - Async way
+       async function populateDiv2(){
+       const a = document.getElementById("first").value;
+       const b = document.getElementById("second").value;
+       const respose = await fetch("https://sum-server.100xdevs.com/sum?a="+a+"&b="+b );
+       const ans= await respose.text();
+       document.getElementById("sum").innerHTML=ans;
+       
+       }
+
+
+
+  </script>
+<body>
+  <div >
+    <input id="first" type="text" placeholder="firstnumber"><br><br>
+    <input  id="second" type="text" placeholder="secondnumber"><br><br>
+    <button onclick="populateDiv()">Calculate sum</button>
+  </div>
+  <div id="sum"></div>
+  <br>
+  
+  
+  
+  
+  
+ 
+</body>
+</html>
